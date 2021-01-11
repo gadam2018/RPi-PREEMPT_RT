@@ -164,10 +164,10 @@ if ((fdout = open(GPIOValue_out, O_WRONLY)) < 0) // apo O_WRONLY
 /* ***************** SET OUTPUT VALUES PERIODICALLY ****************** */
 // Using a timer
  
-    timer_fd = timerfd_create(CLOCK_REALTIME, 0); //  //timer_fd=timerfd_create(CLOCK_MONOTONIC,0);
+    timer_fd = timerfd_create(CLOCK_MONOTONIC, 0); //  //timer_fd=timerfd_create(CLOCK_MONOTONIC,0);
     if (timer_fd == -1) handle_error("timerfd_create");
    
-   if (clock_gettime(CLOCK_REALTIME, &now) == -1) handle_error("clock_gettime");
+   if (clock_gettime(CLOCK_MONOTONIC, &now) == -1) handle_error("clock_gettime");
    timeout.it_value.tv_sec = now.tv_sec;//initial expiration time in secs 
    timeout.it_value.tv_nsec = now.tv_nsec + atoi(argv[2]); //e.g. 2000000nsecs == 2000usecs
    
