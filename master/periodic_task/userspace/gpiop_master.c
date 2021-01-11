@@ -179,7 +179,7 @@ while (choice <= atoi(argv[1]))
 	read(fd, buf, sizeof buf);
 	//printf("Input pin %d value now after 1st interrupt happened is %d\n",GPIO_in, atoi(buf));
 	
-	clock_gettime(CLOCK_REALTIME, &tms); ts_begin=tms; //returns the amount of secs and nsecs since 1-1-1970 at UTC (UNIX Epoch)
+		clock_gettime(CLOCK_MONOTONIC, &tms); ts_begin=tms; //returns the amount of secs and nsecs since 1-1-1970 at UTC (UNIX Epoch)
 	//gettimeofday(&start_time);  //as timespec
 	//gettimeofday(&start_time2); //as timeval
 		
@@ -188,7 +188,7 @@ while (choice <= atoi(argv[1]))
 	read(fd, buf, sizeof buf);
 	//printf("Input pin %d value now after 2nd interrupt happened is %d\n",GPIO_in, atoi(buf));
     	
-	clock_gettime(CLOCK_REALTIME, &tms);  ts_end=tms;  
+	clock_gettime(CLOCK_MONOTONIC, &tms);  ts_end=tms;  
     //gettimeofday(&finish_time);  // as timespec
     //gettimeofday(&finish_time2); // as timeval
    
