@@ -340,10 +340,10 @@ while(choice <= arg)
 
 write(fdout, setting, sizeof (setting)); //3 //set the VALUE - WRITE TO GPIO_OUT - the first time starts by writing 1 //if(bytes=write(fdout, setting, sizeof (setting))>=0) printf("Bytes read=%d\n",bytes); else if(bytes=write(fdout, setting, sizeof (setting))==-1)  fprintf(stderr, "Failed to write.\n");   //if(bytes==-1)  fprintf(stderr, "Failed to write.\n");
 
-clock_gettime(CLOCK_REALTIME, &tms); ts_begin=tms;  //returns the amount of secs and nsecs since 1-1-1970 at UTC (UNIX Epoch) //if(clock_gettime(CLOCK_REALTIME, &tms)==-1) printf("Failure to get start time\n"); else ts_begin=tms;
+clock_gettime(CLOCK_MONOTONIC, &tms); ts_begin=tms;  
 // poll(pointer to an array of pollfd structures, how many elements are in the first argument array, a timeout in milliseconds) 
 poll(&pfd, 1, -1); 	//wait for interrupt - if timeout value is -1 to kernel will wait forever for the activity identified in the array 	// Using poll() we can block program execution until the input level on a GPIO changes.
-clock_gettime(CLOCK_REALTIME, &tms);  ts_end=tms; //if(clock_gettime(CLOCK_REALTIME, &tms)==-1) printf("Failure to get end time\n"); else  ts_end=tms;
+clock_gettime(CLOCK_MONOTONIC, &tms);  ts_end=tms; 
 lseek(fd, 0, SEEK_SET);    // consume interrupt  
 read(fd, buf, sizeof buf); 
 //printf("\rCycle:%u Input now after interrupt happened is %d",choice, atoi(buf)); 
