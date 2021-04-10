@@ -1,4 +1,4 @@
-# RPi-PREEMPT_RT
+# RPis, Linux and PREEMPT_RT
 Software (master & slave) modules for Linux kernels versions latency measurements with and without PREEMPT_RT patch for RPi3&amp;4 (Linux distributions  for RPis: Raspbian Jessie, Raspbian Buster, Ubuntu mate, Arch Linux, and Debian).
 Software modules used to perform real-time performance mesurements of the Linux kernel versions (in RPi3&4), in a master-slave schema. The Raspberry device under test (slave) is connected to, and communicates with, another Raspberry (master) that performs the actual measurements. Measurements include the latency of response tasks in user and kernel space, the response at specific periodic rates on execution of periodic tasks in user and kernel space, the maximum sustained frequency, min, max, std.deviation and variance.
 
